@@ -121,18 +121,14 @@ const Index = () => {
             alt="YAKOUB Logo"
             className="mx-auto mb-8 h-48 w-auto sm:h-64"
           />
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-6xl">
-            A collection of tools, entertainment & solutions
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            Building tools, games & solutions
             <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               that bring joy and optimization
             </span>
           </h1>
-          <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground">
-            A playground for our weird ideas and projects - from autonomous agents to games to whatever comes next. All built under one roof.
-            <br />
-            <span className="mt-2 block text-sm italic">
-              Specializing in AI-driven innovation and the art of streamlining life through intelligent tools.
-            </span>
+          <p className="mx-auto mb-10 max-w-lg text-lg text-muted-foreground">
+            A playground for our experimental ideas and projects, built with a focus on innovation and joy.
           </p>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a href="#projects">
