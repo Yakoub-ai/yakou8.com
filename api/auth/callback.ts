@@ -1,6 +1,6 @@
 import { serialize } from 'cookie';
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
   const { code } = req.query;
 
   if (!code) {

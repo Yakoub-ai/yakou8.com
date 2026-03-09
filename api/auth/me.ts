@@ -1,6 +1,6 @@
 import { parse } from 'cookie';
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
   const cookies = parse(req.headers.cookie || '');
   const token = cookies.gh_token;
 
