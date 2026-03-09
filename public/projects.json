@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Autonomous Agents Playground",
+    "description": "A suite of experimental autonomous agents designed to handle complex task orchestration.",
+    "link": "https://github.com/Yakoub-ai/agents",
+    "tag": "AI Agent"
+  },
+  {
+    "title": "Optimization Tools",
+    "description": "Collection of scripts and tools that streamline development workflows and daily life.",
+    "link": "https://github.com/Yakoub-ai/tools",
+    "tag": "Tool"
+  }
+]
