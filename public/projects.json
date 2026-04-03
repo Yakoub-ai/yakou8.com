@@ -4,5 +4,11 @@
     "description": "A Claude Code plugin providing an expert MMM agent and specialized skills for building, evaluating, and optimizing Marketing Mix Models with pymc-marketing.",
     "link": "https://github.com/Yakoub-ai/agent-mmm",
     "tag": "AI Agent"
+  },
+  {
+    "title": "neural-memory",
+    "description": "A persistent knowledge graph plugin for Claude Code that maps your codebase into three layers - code, bugs, and tasks - Coding sessions with Claude Code always get deep context without burning tokens re-reading files.",
+    "link": "https://github.com/Yakoub-ai/neural-memory",
+    "tag": "Tool"
   }
 ]
