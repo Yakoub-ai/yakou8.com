@@ -16,5 +16,11 @@
     "description": "A Claude Code plugin that makes building Phaser 4 web games fast and easy. It ships 4 specialized agents and 6 slash-command skills that encode deep Phaser 4 knowledge - so you can build any 2D web game without needing to memorize the API.",
     "link": "https://github.com/Yakoub-ai/phaser4-gamedev",
     "tag": "AI Agent"
+  },
+  {
+    "title": "Tech Skills",
+    "description": "200+ production-ready AI agent skills for Claude Code and GitHub Copilot with orchestrator.",
+    "link": "https://github.com/Yakoub-ai/Tech-Skills",
+    "tag": "AI Agent"
   }
 ]
