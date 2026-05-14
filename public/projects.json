@@ -22,5 +22,11 @@
     "description": "200+ production-ready AI agent skills for Claude Code and GitHub Copilot with orchestrator.",
     "link": "https://github.com/Yakoub-ai/Tech-Skills",
     "tag": "AI Agent"
+  },
+  {
+    "title": "Flutterforge",
+    "description": "End-to-end Flutter mobile app development workflow plugin for Claude Code. Commands, agents, skills, hooks, and MCP integrations - from idea to release.",
+    "link": "https://github.com/Yakoub-ai/flutterforge",
+    "tag": "Tool"
   }
 ]
