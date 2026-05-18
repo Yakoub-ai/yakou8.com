@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Loader2, Plus, Trash2, Save, ExternalLink } from "lucide-react";
+import { Github, Loader2, Plus, Trash2, Save, ExternalLink, ChevronUp, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
 
 interface Project {
@@ -56,6 +56,14 @@ const Admin = () => {
   const updateProject = (index: number, field: keyof Project, value: string) => {
     const updated = [...projects];
     updated[index] = { ...updated[index], [field]: value };
+    setProjects(updated);
+  };
+
+  const moveProject = (index: number, direction: 'up' | 'down') => {
+    const newIndex = direction === 'up' ? index - 1 : index + 1;
+    if (newIndex < 0 || newIndex >= projects.length) return;
+    const updated = [...projects];
+    [updated[index], updated[newIndex]] = [updated[newIndex], updated[index]];
     setProjects(updated);
   };
 
@@ -151,14 +159,34 @@ const Admin = () => {
           <CardContent className="space-y-6">
             {projects.map((project, index) => (
               <div key={index} className="relative space-y-4 rounded-xl border border-border p-6 shadow-sm">
-                <Button 
-                  onClick={() => removeProject(index)} 
-                  variant="ghost" 
-                  size="icon" 
-                  className="absolute right-2 top-2 text-muted-foreground hover:text-destructive"
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
+                <div className="absolute right-2 top-2 flex items-center gap-1">
+                  <Button
+                    onClick={() => moveProject(index, 'up')}
+                    variant="ghost"
+                    size="icon"
+                    disabled={index === 0}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    <ChevronUp className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    onClick={() => moveProject(index, 'down')}
+                    variant="ghost"
+                    size="icon"
+                    disabled={index === projects.length - 1}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                  <Button 
+                    onClick={() => removeProject(index)} 
+                    variant="ghost" 
+                    size="icon" 
+                    className="text-muted-foreground hover:text-destructive"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
+                </div>
                 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
@@ -178,6 +206,7 @@ const Admin = () => {
                     >
                       <option value="AI Agent">AI Agent</option>
                       <option value="Tool">Tool</option>
+                      <option value="Platform">Platform</option>
                       <option value="Game">Game</option>
                       <option value="Best Practice">Best Practice</option>
                     </select>
