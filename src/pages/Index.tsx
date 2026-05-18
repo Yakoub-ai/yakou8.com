@@ -121,36 +121,26 @@ const Index = () => {
             alt="YAKOUB Logo"
             className="mx-auto mb-8 h-48 w-auto sm:h-64"
           />
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             AI-Driven Developer
-            <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          </h1>
+          <div className="mx-auto mb-6 max-w-xl text-lg text-muted-foreground text-center whitespace-pre-line">
+            <span className="block font-medium">
               Building at the intersection of marketing technology, data science, and AI.
             </span>
-          </h1>
-          <p className="mx-auto mb-4 max-w-xl text-lg text-muted-foreground">
-            <span className="font-medium">Transforming raw data into actionable insights. Turning insights into intelligent systems.</span>
-          </p>
+            <span className="block mt-2">
+              Transforming raw data into decisions.\nTurning decisions into systems.
+            </span>
+          </div>
           <div className="mb-6 flex justify-center">
             <a href="https://github.com/Yakoub-ai" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.shields.io/badge/Yakoub--ai-181717?style=for-the-badge&logo=github&logoColor=white" alt="Yakoub-ai GitHub" />
+              <img src="https://img.shields.io/badge/Yakoub--ai-181717?style=for-the-badge&logo=github&logoColor=white" />
             </a>
           </div>
-          <div className="mx-auto mb-10 max-w-2xl text-base text-muted-foreground text-left">
-            <ul className="list-disc list-inside space-y-2">
-              <li><b>Tech Lead & MarTech Engineer</b> — architecting production-grade AI/ML platforms and marketing automation solutions</li>
-              <li><b>Data-first mindset</b> — from raw signals to predictive models, I focus on what the numbers truly reveal</li>
-              <li><b>AI Tooling Creator</b> — autonomous agents, LLM pipelines, developer productivity tools</li>
-              <li><b>Full-stack when needed</b> — React, Python, Azure, WordPress—whatever it takes to deliver</li>
-            </ul>
-            <div className="mt-6">
-              I’m interested in projects involving <b>data-driven decision making</b>, <b>AI product development</b>, and challenges that demand both technical depth and strategic vision.
-            </div>
-            <div className="mt-4 flex justify-center">
-              <a href="https://github.com/Yakoub-ai" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.shields.io/badge/Yakoub--ai_Org-181717?style=for-the-badge&logo=github&logoColor=white" alt="Yakoub-ai Org" />
-              </a>
-            </div>
-            <div className="mt-8 text-center">
+          <div className="mx-auto mb-10 max-w-xl text-base text-muted-foreground text-center">
+            I build data-driven systems at the edge of <b>marketing automation</b>, <b>machine learning</b>, and <b>AI tooling</b> — professionally and as a builder.<br /><br />
+            Interested in <b>data-driven decision making</b>, <b>AI product development</b>, and anything that needs both technical depth and strategic thinking.
+            <div className="mt-8">
               <sub className="text-muted-foreground">Built with curiosity. Driven by data.</sub>
             </div>
           </div>
