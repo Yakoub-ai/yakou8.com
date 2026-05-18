@@ -121,15 +121,9 @@ const Index = () => {
             alt="YAKOUB Logo"
             className="mx-auto mb-8 h-48 w-auto sm:h-64"
           />
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            AI-Driven Developer
-          </h1>
           <div className="mx-auto mb-6 max-w-xl text-lg text-muted-foreground text-center whitespace-pre-line">
             <span className="block font-medium">
-              Building at the intersection of marketing technology, data science, and AI.
-            </span>
-            <span className="block mt-2">
-              Transforming raw data into decisions.\nTurning decisions into systems.
+              Transforming raw data into decisions and turning decisions into systems.
             </span>
           </div>
           <div className="mb-6 flex justify-center">
@@ -153,7 +147,7 @@ const Index = () => {
             </a>
             <a href="mailto:george@yakou8.com">
               <Button variant="outline" size="lg" className="gap-2 rounded-xl border-border font-semibold">
-                Contact Us
+                Contact
               </Button>
             </a>
           </div>
@@ -219,48 +213,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="px-6 py-24">
-        <div className="mx-auto max-w-3xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUp}
-            custom={0}
-            className="rounded-2xl border border-border bg-card p-8 sm:p-12"
-          >
-            <h2 className="mb-6 text-3xl font-bold text-foreground">About YAKOUB</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                YAKOUB is a team focused on building tools and projects at the intersection
-                of artificial intelligence and human joy. From autonomous agents to
-                entertainment solutions, our goal is to bring optimization and delight to life.
-              </p>
-              <p>
-                Every project we build follows our commitment to innovation — clean code, 
-                joyful experiences, and engineering excellence.
-              </p>
-            </div>
-            <div className="mt-8">
-              <a href="https://github.com/Yakoub-ai" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="gap-2 rounded-xl border-border font-semibold">
-                  <Github className="h-4 w-4" />
-                  Follow on GitHub
-                </Button>
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-border px-6 py-12">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-3">
             <img src="/logo_Y_nobg.png" alt="YAKOUB" className="h-6 w-6" />
             <span className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} YAKOUB Team. All rights reserved.
+              © {new Date().getFullYear()} YAKOUB. All rights reserved.
             </span>
           </div>
           <a
