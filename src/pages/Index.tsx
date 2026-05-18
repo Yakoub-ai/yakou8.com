@@ -16,6 +16,7 @@ const tagColors: Record<string, string> = {
   "Game": "bg-accent/20 text-accent border-accent/30",
   "Tool": "bg-sky-500/20 text-sky-400 border-sky-500/30",
   "Best Practice": "bg-violet-500/20 text-violet-400 border-violet-500/30",
+  "Platform": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
 };
 
 const navLinks = [
