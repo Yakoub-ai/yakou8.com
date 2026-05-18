@@ -1,26 +1,4 @@
-# yakou8.com - Tools, Entertainment & Solutions
-
-A playground for our weird ideas and projects - from autonomous agents to games to whatever comes next. All built under one roof.
-
-Specializing in AI-driven innovation and the art of streamlining life through intelligent tools.
-
-## How to Edit & Update
-
-To keep the website updated with new projects, you mainly need to edit one file.
-
-### Adding New Projects
-1. Open [Index.tsx](src/pages/Index.tsx).
-2. Look for the `projects` array (around line 10).
-3. Add a new object to the array following this format:
-   ```tsx
-   {
-     title: "Your Project Name",
-     description: "A short, catchy description of what this does.",
-     link: "https://github.com/Yakoub-ai/your-project",
-     tag: "Tool", // Options: "AI Agent", "Game", "Tool", "Best Practice"
-   },
-   ```
-4. Save the file and the changes will be reflected on the website.
+# yakou8.com
 
 ### 🔐 Admin Portal (CMS)
 The website includes a secure admin portal at `/admin` that allows you to manage projects without touching the code.
@@ -39,8 +17,4 @@ To enable the admin portal, you must set the following **Environment Variables**
 - **Contact**: The "Contact Us" button links to `mailto:georgeyakoub@gmail.com`.
 
 ## Deployment
-
 The website is configured for hosting on **Vercel**. Every push to the `main` branch will trigger an automatic deployment.
-
----
-*Built with ❤️ by the YAKOUB Team*
