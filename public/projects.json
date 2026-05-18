@@ -1,8 +1,20 @@
 [
   {
+    "title": "mAI Priority",
+    "description": "mAI Priority empowers teams to evaluate and prioritize initiatives, visualize delivery timelines with portfolio Gantt charts, and leverage AI to automatically draft kanban tasks, requirements, risks, and decisions - streamlining preparation before work begins.",
+    "link": "https://maipriority.com/",
+    "tag": "Platform"
+  },
+  {
     "title": "agent-mmm",
     "description": "A Claude Code plugin providing an expert MMM agent and specialized skills for building, evaluating, and optimizing Marketing Mix Models with pymc-marketing.",
     "link": "https://github.com/Yakoub-ai/agent-mmm",
+    "tag": "AI Agent"
+  },
+  {
+    "title": "phaser4-gamedev",
+    "description": "A Claude Code plugin that makes building Phaser 4 web games fast and easy. It ships 4 specialized agents and 6 slash-command skills that encode deep Phaser 4 knowledge - so you can build any 2D web game without needing to memorize the API.",
+    "link": "https://github.com/Yakoub-ai/phaser4-gamedev",
     "tag": "AI Agent"
   },
   {
@@ -10,12 +22,6 @@
     "description": "A persistent knowledge graph plugin for Claude Code that maps your codebase into three layers - code, bugs, and tasks - Coding sessions with Claude Code always get deep context without burning tokens re-reading files.",
     "link": "https://github.com/Yakoub-ai/neural-memory",
     "tag": "Tool"
-  },
-  {
-    "title": "phaser4-gamedev",
-    "description": "A Claude Code plugin that makes building Phaser 4 web games fast and easy. It ships 4 specialized agents and 6 slash-command skills that encode deep Phaser 4 knowledge - so you can build any 2D web game without needing to memorize the API.",
-    "link": "https://github.com/Yakoub-ai/phaser4-gamedev",
-    "tag": "AI Agent"
   },
   {
     "title": "Tech Skills",
