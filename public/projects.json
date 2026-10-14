@@ -18,6 +18,12 @@
     "tag": "AI Agent"
   },
   {
+    "title": "Stress Relief",
+    "description": "A Vampire Survivors-inspired auto-battler where you move, survive, and watch your build snowball into screen-filling chaos. Built with Phaser.",
+    "link": "https://stress-relief-seven.vercel.app/",
+    "tag": "Game"
+  },
+  {
     "title": "neural-memory",
     "description": "A persistent knowledge graph plugin for Claude Code that maps your codebase into three layers - code, bugs, and tasks - Coding sessions with Claude Code always get deep context without burning tokens re-reading files.",
     "link": "https://github.com/Yakoub-ai/neural-memory",
@@ -28,6 +34,12 @@
     "description": "200+ production-ready AI agent skills for Claude Code and GitHub Copilot with orchestrator.",
     "link": "https://github.com/Yakoub-ai/Tech-Skills",
     "tag": "AI Agent"
+  },
+  {
+    "title": "BoostMySite",
+    "description": "Website audit: find what is costing your site reach and sales.",
+    "link": "https://boostmysite.app",
+    "tag": "Tool"
   },
   {
     "title": "Flutterforge",
