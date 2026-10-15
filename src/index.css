@@ -83,3 +83,25 @@ body::before {
   background-repeat: repeat;
   background-size: 256px 256px;
 }
+
+/* Technical grid backdrop */
+.bg-grid {
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 70%);
+}
+
+.cursor-blink {
+  animation: blink 1.1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cursor-blink { animation: none; }
+}
