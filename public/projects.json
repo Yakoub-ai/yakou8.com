@@ -6,15 +6,15 @@
     "tag": "Platform"
   },
   {
-    "title": "agent-mmm",
-    "description": "A Claude Code plugin providing an expert MMM agent and specialized skills for building, evaluating, and optimizing Marketing Mix Models with pymc-marketing.",
-    "link": "https://github.com/Yakoub-ai/agent-mmm",
-    "tag": "AI Agent"
-  },
-  {
     "title": "phaser4-gamedev",
     "description": "A Claude Code plugin that makes building Phaser 4 web games fast and easy. It ships 4 specialized agents and 6 slash-command skills that encode deep Phaser 4 knowledge - so you can build any 2D web game without needing to memorize the API.",
     "link": "https://github.com/Yakoub-ai/phaser4-gamedev",
+    "tag": "AI Agent"
+  },
+  {
+    "title": "engineering-team",
+    "description": "A full-lifecycle engineering team with tool-backed security audits, EU-regulation aware, environment setup, context reuse, recorded handovers and a local visual workspace for any project.",
+    "link": "https://github.com/Yakoub-ai/engineering-team",
     "tag": "AI Agent"
   },
   {
@@ -22,6 +22,18 @@
     "description": "A Vampire Survivors-inspired auto-battler where you move, survive, and watch your build snowball into screen-filling chaos. Built with Phaser.",
     "link": "https://stress-relief-seven.vercel.app/",
     "tag": "Game"
+  },
+  {
+    "title": "agent-mmm",
+    "description": "A Claude Code plugin providing an expert MMM agent and specialized skills for building, evaluating, and optimizing Marketing Mix Models with pymc-marketing.",
+    "link": "https://github.com/Yakoub-ai/agent-mmm",
+    "tag": "AI Agent"
+  },
+  {
+    "title": "BoostMySite",
+    "description": "Website audit: find what is costing your site reach and sales.",
+    "link": "https://boostmysite.app",
+    "tag": "Tool"
   },
   {
     "title": "neural-memory",
@@ -34,12 +46,6 @@
     "description": "200+ production-ready AI agent skills for Claude Code and GitHub Copilot with orchestrator.",
     "link": "https://github.com/Yakoub-ai/Tech-Skills",
     "tag": "AI Agent"
-  },
-  {
-    "title": "BoostMySite",
-    "description": "Website audit: find what is costing your site reach and sales.",
-    "link": "https://boostmysite.app",
-    "tag": "Tool"
   },
   {
     "title": "Flutterforge",
