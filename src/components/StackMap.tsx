@@ -8,12 +8,12 @@ interface Group {
 
 const W = 960;
 const H = 560;
-const CENTER = { x: 480, y: 280 };
+const CENTER = { x: 500, y: 280 };
 
 // Left branch fans its leaves over the left side, right branch over the right.
 const layout = [
-  { hub: { x: 330, y: 280 }, radius: 200, from: 118, to: 242, side: "left" as const },
-  { hub: { x: 630, y: 280 }, radius: 170, from: 32, to: -32, side: "right" as const },
+  { hub: { x: 380, y: 280 }, radius: 190, from: 118, to: 242, side: "left" as const },
+  { hub: { x: 660, y: 280 }, radius: 170, from: 50, to: -50, side: "right" as const },
 ];
 
 const charW = 7.4;

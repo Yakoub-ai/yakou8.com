@@ -447,6 +447,10 @@ body:has(.manual) {
   font-size: 13px;
   dominant-baseline: central;
   fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 4px;
+  stroke-linejoin: round;
   transition: fill 150ms;
 }
 

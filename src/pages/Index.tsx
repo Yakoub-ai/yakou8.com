@@ -40,12 +40,24 @@ const stack = [
   {
     group: "Data & AI",
     short: "DATA & AI",
-    items: ["Python", "PyMC", "scikit-learn", "Pandas", "Databricks", "MLflow", "BigQuery", "SQL", "OpenAI API", "Anthropic API", "MCP"],
+    items: [
+      "Python",
+      "SQL",
+      "Pandas",
+      "Databricks",
+      "MLflow",
+      "Predictive Models",
+      "Marketing Mix Modeling",
+      "OpenAI API",
+      "Anthropic API",
+      "Claude Code",
+      "MCP",
+    ],
   },
   {
-    group: "Cloud & Infrastructure",
-    short: "CLOUD & INFRA",
-    items: ["Azure", "Azure DevOps", "Docker"],
+    group: "Build & Ship",
+    short: "BUILD & SHIP",
+    items: ["React", "TypeScript", "Phaser", "Flutter", "Docker", "Vercel"],
   },
 ];
 
