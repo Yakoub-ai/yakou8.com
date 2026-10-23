@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import AsciiField from "@/components/AsciiField";
 import "./manual.css";
 
 interface Project {
@@ -179,6 +180,7 @@ const Chapter = ({
 const Index = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [activeTag, setActiveTag] = useState("All");
 
   useEffect(() => {
     fetch("/projects.json")
@@ -190,7 +192,13 @@ const Index = () => {
 
   const visible = projects
     .map((p) => ({ ...p, url: typeof p?.link === "string" ? parseLink(p.link) : null }))
-    .filter((p): p is Project & { url: URL } => p.url !== null);
+    .filter((p): p is Project & { url: URL } => p.url !== null)
+    .map((p, i) => ({ ...p, n: i + 1, tag: typeof p.tag === "string" ? p.tag : "" }));
+
+  const tagCounts = new Map<string, number>();
+  visible.forEach((p) => p.tag && tagCounts.set(p.tag, (tagCounts.get(p.tag) ?? 0) + 1));
+  const tags = Array.from(tagCounts);
+  const shown = activeTag === "All" ? visible : visible.filter((p) => p.tag === activeTag);
 
   const shipped = useCountOnce(loading ? null : visible.length);
   const status = useStatusOnce();
@@ -198,6 +206,8 @@ const Index = () => {
 
   return (
     <div className="manual">
+      <AsciiField />
+      <div className="content">
       <a href="#main" className="skip mono">
         Skip to content
       </a>
@@ -231,8 +241,10 @@ const Index = () => {
 
       <main id="main" className="column">
         <section id="top" className="mast">
-          <h1>AI-driven developer.</h1>
-          <p className="lede">Building at the intersection of marketing technology, data science, and AI.</p>
+          <h1>
+            AI-driven developer<span className="accent">.</span>
+          </h1>
+          <p className="lede measure">Building at the intersection of marketing technology, data science, and AI.</p>
           <p>Turning raw data into decisions. Turning decisions into systems.</p>
 
           <dl className="rows" style={{ marginTop: 48 }}>
@@ -255,12 +267,13 @@ const Index = () => {
           </dl>
 
           <p className="label status">
-            Status <span style={{ color: "var(--ink)", marginLeft: "1.5em" }}>{status}</span>
+            <span className="status-dot" aria-hidden />
+            Status <span className="accent">{status}</span>
           </p>
         </section>
 
         <Chapter id="practice" number="01" kicker="01 — Practice" title="What I build.">
-          <p className="chapter-intro">
+          <p className="chapter-intro measure">
             I build data-driven systems at the edge of marketing automation, machine learning, and AI tooling —
             professionally and as a builder.
           </p>
@@ -278,14 +291,14 @@ const Index = () => {
         </Chapter>
 
         <Chapter id="instruments" number="02" kicker="02 — Instruments" title="What I use.">
-          <p className="chapter-intro">The stack behind the systems. No extras for show.</p>
+          <p className="chapter-intro measure">The stack behind the systems. No extras for show.</p>
           <div className="groups">
             {stack.map((group) => (
               <div key={group.group}>
                 <p className="label group-label">{group.group}</p>
                 <ul>
-                  {group.items.map((item) => (
-                    <li key={item} className="tool">
+                  {group.items.map((item, i) => (
+                    <li key={item} className="tool" data-n={pad(i + 1)}>
                       {item}
                     </li>
                   ))}
@@ -301,7 +314,7 @@ const Index = () => {
           kicker={`03 — Work · Index ${loading ? "--" : pad(visible.length)}`}
           title="Things I've shipped."
         >
-          <p className="chapter-intro">Public builds, in the order they are published.</p>
+          <p className="chapter-intro measure">Public builds, in the order they are published.</p>
           {loading ? (
             <p className="mono muted" style={{ fontSize: 13 }}>
               Reading index.
@@ -311,31 +324,49 @@ const Index = () => {
               No public work yet.
             </p>
           ) : (
-            <ol className="rows">
-              {visible.map((project, i) => (
-                <li key={`${project.url.href}-${i}`} className="row">
-                  <span className="row-index">{pad(i + 1)}</span>
-                  <div>
-                    {project.tag && <span className="label project-tag">{String(project.tag)}</span>}
-                    <h3>
-                      <a href={project.url.href} target="_blank" rel="noopener noreferrer">
+            <>
+              {tags.length > 1 && (
+                <div className="filters" role="group" aria-label="Filter projects by tag">
+                  {[["All", visible.length] as [string, number], ...tags].map(([tag, count]) => (
+                    <button
+                      key={tag}
+                      type="button"
+                      className="pill"
+                      aria-pressed={activeTag === tag}
+                      onClick={() => setActiveTag(tag)}
+                    >
+                      {tag}
+                      <span className="pill-count">{pad(count)}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+              <ul className="cards">
+                {shown.map((project) => (
+                  <li key={`${project.url.href}-${project.n}`}>
+                    <a className="card" href={project.url.href} target="_blank" rel="noopener noreferrer">
+                      <span className="card-top label">
+                        <span>{pad(project.n)}</span>
+                        {project.tag && <span className="card-tag">{project.tag}</span>}
+                      </span>
+                      <h3>
                         {String(project.title ?? "")}
                         <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    </h3>
-                    <p className="muted">{String(project.description ?? "")}</p>
-                    <p className="project-url">
-                      {`${project.url.hostname}${project.url.pathname}`.replace(/\/$/, "")}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+                      </h3>
+                      <span className="card-body">{String(project.description ?? "")}</span>
+                      <span className="card-url">
+                        {`${project.url.hostname}${project.url.pathname}`.replace(/\/$/, "")}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
         </Chapter>
 
         <Chapter id="open" number="04" kicker="04 — Open" title="Let's build something.">
-          <p className="chapter-intro">
+          <p className="chapter-intro measure">
             I'm interested in projects involving data-driven decision making, AI product development, and anything
             that needs both technical depth and strategic thinking. Active projects and experiments live under{" "}
             <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
@@ -368,6 +399,7 @@ const Index = () => {
           <span>© {new Date().getFullYear()} YAKOUB</span>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
