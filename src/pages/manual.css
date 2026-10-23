@@ -252,8 +252,8 @@ body:has(.manual) {
 
 /* Mast */
 .manual .mast {
-  padding-top: 88px;
-  padding-bottom: 112px;
+  padding-top: 120px;
+  padding-bottom: 160px;
 }
 
 .manual .lede {
@@ -289,24 +289,6 @@ body:has(.manual) {
 
 .manual .row .label {
   padding-top: 3px;
-}
-
-.manual .mast .rows {
-  background: linear-gradient(90deg, rgba(11, 12, 13, 0.85), rgba(11, 12, 13, 0.4));
-}
-
-.manual .status {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.manual .status-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--accent);
-  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.8);
 }
 
 /* Chapters */
@@ -366,40 +348,177 @@ body:has(.manual) {
   margin-top: 6px;
 }
 
-/* Instruments */
-.manual .groups {
-  display: grid;
-  gap: 40px;
+/* Instruments: mind map (wide) / tree (narrow) */
+.manual .stack-map {
+  display: none;
 }
 
-@media (min-width: 640px) {
-  .manual .groups {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
+.manual .stack-tree,
+.manual .stack-tree ul {
+  list-style: none;
 }
 
-.manual .group-label {
-  padding-bottom: 10px;
+.manual .stack-tree ul {
+  margin-left: 4px;
 }
 
-.manual .tool {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-top: 1px solid var(--hair);
+.manual .stack-tree ul li {
+  position: relative;
+  padding: 5px 0 5px 22px;
   font-family: var(--mono);
   font-size: 13px;
 }
 
-.manual .tool::after {
-  content: attr(data-n);
-  color: var(--muted);
-  font-size: 11px;
+.manual .stack-tree ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05em;
+  width: 14px;
+  height: 1px;
+  background: rgba(var(--accent-rgb), 0.35);
 }
 
-.manual .tool:last-child {
-  border-bottom: 1px solid var(--hair);
+.manual .stack-tree ul li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(var(--accent-rgb), 0.35);
+}
+
+.manual .stack-tree ul li:last-child::after {
+  bottom: auto;
+  height: 1.05em;
+}
+
+.manual .tree-root,
+.manual .tree-branch {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid rgba(var(--accent-rgb), 0.5);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(11, 12, 13, 0.8);
+}
+
+.manual .tree-root {
+  box-shadow: 0 0 18px -4px rgba(var(--accent-rgb), 0.6);
+  margin-bottom: 4px;
+}
+
+.manual .tree-branch {
+  color: var(--ink);
+  border-color: var(--hair);
+  margin-bottom: 2px;
+}
+
+@media (min-width: 900px) {
+  .manual .stack-map {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* The tree stays as the screen-reader version. */
+  .manual .stack-tree {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+.manual .stack {
+  position: relative;
+}
+
+.manual .stack-map text {
+  font-family: var(--mono);
+  font-size: 13px;
+  dominant-baseline: central;
+  fill: var(--ink);
+  transition: fill 150ms;
+}
+
+.manual .stack-map .link {
+  fill: none;
+  stroke: var(--hair);
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 700ms cubic-bezier(0.2, 0, 0, 1) var(--d, 0ms), stroke 150ms;
+}
+
+.manual .stack[data-drawn="true"] .link {
+  stroke-dashoffset: 0;
+}
+
+.manual .stack-map circle {
+  fill: var(--bg);
+  stroke: var(--muted);
+  transition: fill 150ms, stroke 150ms;
+}
+
+.manual .stack-map .hub rect {
+  fill: var(--bg);
+  stroke: #3a3d41;
+}
+
+.manual .stack-map .hub text {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  fill: var(--muted);
+}
+
+.manual .stack-map .core rect {
+  fill: rgba(var(--accent-rgb), 0.1);
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 10px rgba(var(--accent-rgb), 0.5));
+}
+
+.manual .stack-map .core text {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  fill: var(--accent);
+}
+
+.manual .stack-map .leaf,
+.manual .stack-map .hub {
+  cursor: default;
+}
+
+.manual .stack-map .branch:hover > .link,
+.manual .stack-map .branch:has(.hub:hover) .leaf .link,
+.manual .stack-map .leaf:hover .link {
+  stroke: var(--accent);
+}
+
+.manual .stack-map .branch:has(.hub:hover) .hub rect,
+.manual .stack-map .branch:has(.leaf:hover) .hub rect {
+  stroke: var(--accent);
+}
+
+.manual .stack-map .branch:has(.hub:hover) .hub text,
+.manual .stack-map .branch:has(.leaf:hover) .hub text,
+.manual .stack-map .branch:has(.hub:hover) .leaf text,
+.manual .stack-map .leaf:hover text {
+  fill: var(--accent);
+}
+
+.manual .stack-map .branch:has(.hub:hover) .leaf circle,
+.manual .stack-map .leaf:hover circle {
+  fill: var(--accent);
+  stroke: var(--accent);
 }
 
 /* Work: filters */
@@ -550,6 +669,11 @@ body:has(.manual) {
   .manual .rule {
     transform: none;
     transition: none;
+  }
+
+  .manual .stack-map .link {
+    stroke-dashoffset: 0;
+    transition: stroke 150ms;
   }
 
   .manual .card,

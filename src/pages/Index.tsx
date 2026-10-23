@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import AsciiField from "@/components/AsciiField";
+import StackMap from "@/components/StackMap";
+import { useInViewOnce } from "@/hooks/use-in-view-once";
 import "./manual.css";
 
 interface Project {
@@ -37,15 +39,15 @@ const roles = [
 const stack = [
   {
     group: "Data & AI",
+    short: "DATA & AI",
     items: ["Python", "PyMC", "scikit-learn", "Pandas", "Databricks", "MLflow", "BigQuery", "SQL", "OpenAI API", "Anthropic API", "MCP"],
   },
   {
     group: "Cloud & Infrastructure",
+    short: "CLOUD & INFRA",
     items: ["Azure", "Azure DevOps", "Docker"],
   },
 ];
-
-const statusStates = ["INDEX LIVE", "READING PROJECTS", "ORG YAKOUB-AI", "CLOCK QUIET"];
 
 // projects.json is editable via the admin CMS; only render http(s) links.
 const parseLink = (link: string) => {
@@ -59,49 +61,6 @@ const parseLink = (link: string) => {
 };
 
 const pad = (n: number) => String(n).padStart(2, "0");
-
-const prefersReducedMotion = () =>
-  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-// Counts from 0 to target once, the first time target is known.
-const useCountOnce = (target: number | null) => {
-  const [value, setValue] = useState(0);
-  const done = useRef(false);
-
-  useEffect(() => {
-    if (target === null || done.current) return;
-    done.current = true;
-    if (target === 0 || prefersReducedMotion()) {
-      setValue(target);
-      return;
-    }
-    const duration = 900;
-    const start = performance.now();
-    let frame = 0;
-    const tick = (now: number) => {
-      const t = Math.min((now - start) / duration, 1);
-      setValue(Math.round(target * (1 - Math.pow(1 - t, 3))));
-      if (t < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [target]);
-
-  return value;
-};
-
-// Steps through the states once, then stays on the last one.
-const useStatusOnce = () => {
-  const [step, setStep] = useState(() => (prefersReducedMotion() ? statusStates.length - 1 : 0));
-
-  useEffect(() => {
-    if (step >= statusStates.length - 1) return;
-    const id = window.setTimeout(() => setStep((s) => s + 1), 1400);
-    return () => window.clearTimeout(id);
-  }, [step]);
-
-  return statusStates[step];
-};
 
 const useActiveChapter = () => {
   const [active, setActive] = useState<string | null>(null);
@@ -128,28 +87,7 @@ const useActiveChapter = () => {
 
 // Draws in from the left the first time it enters the viewport.
 const Rule = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [drawn, setDrawn] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !("IntersectionObserver" in window)) {
-      setDrawn(true);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setDrawn(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 1 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
+  const [ref, drawn] = useInViewOnce<HTMLDivElement>();
   return <div ref={ref} className="rule" data-drawn={drawn} aria-hidden />;
 };
 
@@ -200,8 +138,6 @@ const Index = () => {
   const tags = Array.from(tagCounts);
   const shown = activeTag === "All" ? visible : visible.filter((p) => p.tag === activeTag);
 
-  const shipped = useCountOnce(loading ? null : visible.length);
-  const status = useStatusOnce();
   const active = useActiveChapter();
 
   return (
@@ -245,32 +181,7 @@ const Index = () => {
             AI-driven developer<span className="accent">.</span>
           </h1>
           <p className="lede measure">Building at the intersection of marketing technology, data science, and AI.</p>
-          <p>Turning raw data into decisions. Turning decisions into systems.</p>
-
-          <dl className="rows" style={{ marginTop: 48 }}>
-            <div className="row">
-              <dt className="label">Role</dt>
-              <dd>Tech Lead · MarTech</dd>
-            </div>
-            <div className="row">
-              <dt className="label">Org</dt>
-              <dd>Yakoub-ai</dd>
-            </div>
-            <div className="row">
-              <dt className="label">Shipped</dt>
-              <dd className="mono">{pad(shipped)}</dd>
-            </div>
-            <div className="row">
-              <dt className="label">Clock</dt>
-              <dd>Raw data → decisions → systems</dd>
-            </div>
-          </dl>
-
-          <p className="label status">
-            <span className="status-dot" aria-hidden />
-            Status <span className="accent">{status}</span>
-          </p>
-        </section>
+          <p>Turning raw data into decisions. Turning decisions into systems.</p>        </section>
 
         <Chapter id="practice" number="01" kicker="01 — Practice" title="What I build.">
           <p className="chapter-intro measure">
@@ -292,20 +203,7 @@ const Index = () => {
 
         <Chapter id="instruments" number="02" kicker="02 — Instruments" title="What I use.">
           <p className="chapter-intro measure">The stack behind the systems. No extras for show.</p>
-          <div className="groups">
-            {stack.map((group) => (
-              <div key={group.group}>
-                <p className="label group-label">{group.group}</p>
-                <ul>
-                  {group.items.map((item, i) => (
-                    <li key={item} className="tool" data-n={pad(i + 1)}>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          <StackMap groups={stack} />
         </Chapter>
 
         <Chapter
