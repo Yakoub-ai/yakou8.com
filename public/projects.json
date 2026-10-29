@@ -6,22 +6,28 @@
     "tag": "Tool"
   },
   {
-    "title": "phaser4-gamedev",
-    "description": "A Claude Code plugin that makes building Phaser 4 web games fast and easy. It ships 4 specialized agents and 6 slash-command skills that encode deep Phaser 4 knowledge - so you can build any 2D web game without needing to memorize the API.",
-    "link": "https://github.com/Yakoub-ai/phaser4-gamedev",
-    "tag": "AI Agent"
-  },
-  {
     "title": "engineering-team",
     "description": "A full-lifecycle engineering team with tool-backed security audits, EU-regulation aware, environment setup, context reuse, recorded handovers and a local visual workspace for any project.",
     "link": "https://github.com/Yakoub-ai/engineering-team",
     "tag": "AI Agent"
   },
   {
-    "title": "Stress Relief",
-    "description": "A Vampire Survivors-inspired auto-battler where you move, survive, and watch your build snowball into screen-filling chaos. Built with Phaser.",
-    "link": "https://stress-relief-seven.vercel.app/",
+    "title": "phaser4-gamedev",
+    "description": "A Claude Code plugin that makes building Phaser 4 web games fast and easy. It ships 4 specialized agents and 6 slash-command skills that encode deep Phaser 4 knowledge - so you can build any 2D web game without needing to memorize the API.",
+    "link": "https://github.com/Yakoub-ai/phaser4-gamedev",
+    "tag": "AI Agent"
+  },
+  {
+    "title": "Ember Citadel",
+    "description": "Ember Citadel: a browser action RPG where you explore a procedural world by day, build a fortified citadel with your embers, and survive horde nights and boss fights with parry-and-dodge combat. Built in TypeScript with three.js and Rapier physics; runs offline as an installable PWA on desktop and mobile.",
+    "link": "https://ember-citadel.georgeyakoub.workers.dev/",
     "tag": "Game"
+  },
+  {
+    "title": "BoostMySite",
+    "description": "Website audit: find what is costing your site reach and sales.",
+    "link": "https://boostmysite.app",
+    "tag": "Tool"
   },
   {
     "title": "agent-mmm",
@@ -30,10 +36,10 @@
     "tag": "AI Agent"
   },
   {
-    "title": "BoostMySite",
-    "description": "Website audit: find what is costing your site reach and sales.",
-    "link": "https://boostmysite.app",
-    "tag": "Tool"
+    "title": "Stress Relief",
+    "description": "A Vampire Survivors-inspired auto-battler where you move, survive, and watch your build snowball into screen-filling chaos. Built with Phaser.",
+    "link": "https://stress-relief-seven.vercel.app/",
+    "tag": "Game"
   },
   {
     "title": "neural-memory",
@@ -46,11 +52,5 @@
     "description": "200+ production-ready AI agent skills for Claude Code and GitHub Copilot with orchestrator.",
     "link": "https://github.com/Yakoub-ai/Tech-Skills",
     "tag": "AI Agent"
-  },
-  {
-    "title": "Flutterforge",
-    "description": "End-to-end Flutter mobile app development workflow plugin for Claude Code. Commands, agents, skills, hooks, and MCP integrations - from idea to release.",
-    "link": "https://github.com/Yakoub-ai/flutterforge",
-    "tag": "Tool"
   }
 ]
